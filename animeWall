@@ -21,10 +21,11 @@ done &
 makeWall(){
 rm -rf $workdir
 mkdir $workdir
-ffmpeg -i $1 $workdir/thumb%04d.jpg -hide_banner
+echo "Preparando..."
+ffmpeg -i $1 $workdir/thumb%04d.jpg -hide_banner 2>&1
 if [ $? != 0 ];then
 	clear
-	echo "Erro!"
+	echo "Erro durante preparação do vídeo!"
 	exit
 fi
 #ffmpeg -i wall.mp4 -r 1/1 ./sequence/thumb%04d.jpg -hide_banner
