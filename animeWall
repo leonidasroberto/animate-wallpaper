@@ -31,6 +31,7 @@ fi
 }
 
 install(){
+	sudo apt install ffmpeg feh -y
 	mkdir $workdir
 	sudo cp ./animeWall /usr/bin
 	echo "Instalação finalizada!"
