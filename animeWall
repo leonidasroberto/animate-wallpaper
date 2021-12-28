@@ -1,0 +1,45 @@
+#!/bin/bash
+workdir="~/.animate"
+
+## get system name -> uname -v | awk '{print $1}' | awk -F "-" '{print $2}'
+
+trap printout SIGINT
+printout(){
+	echo "EXIT!"
+	exit
+}
+
+runWall(){
+data=$(ls -l $workdir | awk '{print $9}')
+while [ True ];do
+	for wall in $data;do
+		feh --bg-fill ./sequence/$wall	
+	done
+done &
+}
+
+makeWall(){
+rm -rf $workdir
+mkdir $workdir
+ffmpeg -i $1 $workdir/thumb%04d.jpg -hide_banner
+if [ $? != 0 ];then
+	clear
+	echo "Erro!"
+	exit
+fi
+#ffmpeg -i wall.mp4 -r 1/1 ./sequence/thumb%04d.jpg -hide_banner
+}
+
+install(){
+	mkdir $workdir
+	sudo cp ./animeWall /usr/bin
+	echo "Instalação finalizada!"
+}
+
+case $1 in
+"make")makeWall $1;;
+"run")runWall;;
+"install")install;;
+*)echo "invalid option";;
+esac
+
