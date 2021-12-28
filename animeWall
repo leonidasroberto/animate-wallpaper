@@ -38,7 +38,7 @@ install(){
 }
 
 case $1 in
-"make")makeWall $1;;
+"make")makeWall $2;;
 "run")runWall;;
 "install")install;;
 "stop")killall animeWall;;
