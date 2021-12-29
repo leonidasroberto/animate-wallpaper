@@ -45,8 +45,6 @@ install(){
 		sudo cp ./animeWall /usr/bin
 		echo "Instalação finalizada!"
 	;;
-
-
 	*)echo "informe o seu sistema: ubuntu, arch.";;
 	esac
 	
