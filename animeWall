@@ -22,7 +22,7 @@ makeWall(){
 rm -rf $workdir
 mkdir $workdir
 echo "Preparando..."
-ffmpeg -i $1 $workdir/thumb%04d.jpg -hide_banner 2>&1
+ffmpeg -i $1 $workdir/thumb%04d.jpg -hide_banner > /dev/null 2>&1
 if [ $? != 0 ];then
 	clear
 	echo "Erro durante preparação do vídeo!"
